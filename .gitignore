@@ -135,6 +135,8 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+.fine_tune
+fine_tune/
 
 # Spyder project settings
 .spyderproject
