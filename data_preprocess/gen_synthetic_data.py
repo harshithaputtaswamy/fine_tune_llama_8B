@@ -43,28 +43,25 @@ def get_QA_LLM(data: str, num_records: int = 5) -> dict:
 
 
 if __name__ == "__main__":
-    # document_converter = DocumentConverter()
-    # document = document_converter.convert("data_preprocess/COMPS_1376.pdf").document
+    document_converter = DocumentConverter()
+    document = document_converter.convert("data_preprocess/COMPS_1376.pdf").document
 
-    # chunker = HybridChunker()
-    # chunks = chunker.chunk(dl_doc=document)
+    chunker = HybridChunker()
+    chunks = chunker.chunk(dl_doc=document)
 
 
-    # data_chunks = []
-    # for chunk in chunks:
-    #     contextualized_text = chunker.contextualize(chunk=chunk)
-    #     data_chunks.append(contextualized_text)
+    data_chunks = []
+    for chunk in chunks:
+        contextualized_text = chunker.contextualize(chunk=chunk)
+        data_chunks.append(contextualized_text)
 
-    # with open("data_chunks.json", "w") as f:
-    #     json.dump(data_chunks, f)
+    with open("data_chunks.json", "w") as f:
+        json.dump(data_chunks, f)
 
-    # data_chunks = []
-    data_chunks = load_existing_data("data/data_chunks.json")
-    
     print("Total chunks ", len(data_chunks))
 
     processed_data = []
-    for idx, contextualized_text in enumerate(data_chunks[1012:]):    
+    for idx, contextualized_text in enumerate(data_chunks):    
         print(idx)
         llm_data = get_QA_LLM(contextualized_text)
 
