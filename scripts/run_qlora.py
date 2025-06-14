@@ -84,7 +84,7 @@ def tokenize_fn(example):
     tokenizer = AutoTokenizer.from_pretrained(
         base_model,
         trust_remote_code=True,
-        token="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",
+        token="",
         use_fast=True
     )
     
